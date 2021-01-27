@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>FFETM6_TestC</title>
+    <script src="Build/UnityLoader.js"></script>
+    <script>
+	  var unityInstance = UnityLoader.instantiate("unityContainer", "Build/M6T_C.json");
+    </script>
+    </script>
+	
+	    <script type="text/javascript">
+	    console.log("V001");
+      var userEmail;
+      window.onmessage = (event) => {
+        if (event.data) {
+          //document.getElementById("theLabel").innerHTML = event.data;
+          userEmail = event.data;
+		console.log(userEmail);
+		//SetEmail();
+        }
+      };
+	    
+	    function IsUnityReady() {
+		    console.log("IsUnityReady fucntion has run");
+	    	SetEmail();
+	    }
+	    
+	 function SetEmail() {
+		console.log("setEmail fucntion has run");
+	 	//document.getElementById("email").innerHTML = userEmail;
+		 unityInstance.SendMessage('Bridge', 'SendToUnity', userEmail);
+	 }
+    </script>
+	
+  </head>
+  <body>
+    <div id="unityContainer" style="width: 836px; height: 400px; margin: auto"></div>
+  </body>
+</html>
